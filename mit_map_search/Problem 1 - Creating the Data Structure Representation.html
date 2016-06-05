@@ -1,0 +1,195 @@
+<head>
+</head>
+<body>
+
+<div class="problem" aria-live="polite" aria-relevant="all">
+  <div>
+  <span>
+    <p>In this problem set, we are dealing with edges that have
+      different weights. In the figure below, the blue numbers show the
+      cost of traversing an edge in terms of total distance traveled,
+      while the green numbers show the cost of traversing an edge in
+      terms of distance spent outdoors. Note that the distance spent
+      outdoors for a single edge is always less than or equal to the
+      total distance it takes to traverse that edge. Now the cost of
+      going from "a" to "b" to "e" is a total distance traveled of 22
+      meters, where 14 of those meters are spent outdoors. These weights
+      are important when comparing multiple paths because you want to
+      look at the weights associated with the edges in the path instead
+      of just the number of edges traversed.</p>
+    <p>
+      </p><center>
+        <a href="./Problem 1 - Creating the Data Structure Representation   Problem Set 5   6.00.2x Courseware   edX_files/files_ps10_files_ps10_weightedWithContraint.gif" target="_blank">
+          <img class="aligncenter size-full wp-image-1169" title="ps10_weightedWithContraint" src="./Problem 1 - Creating the Data Structure Representation   Problem Set 5   6.00.2x Courseware   edX_files/files_ps10_files_ps10_weightedWithContraint.gif" alt="" width="350" height="171">
+        </a>
+      </center>
+    <p></p>
+    <p>In <tt>graph.py</tt>, you’ll find the <tt>Digraph</tt>,
+      <tt>Node</tt>, and <tt>Edge</tt> classes, which do not store
+      information about weights associated with each edge.</p>
+    <p>Extend the classes so that it fits our case of a weighted graph.
+      Think about how you can modify the classes to store the weights
+      shown above. Make modifications directly in <tt>graph.py</tt>. <b>We highly recommend that you read through the entire problem set before settling on a particular implementation and representation of nodes and edges.</b> </p>
+    <section class="hints">
+      <div class="collapsible">
+        <header>
+          <a href="https://courses.edx.org/courses/MITx/6.00.2_2x/3T2014/courseware/b33b3ed61da74919872a3d5ac354c512/2da3a93ca7fa418cae541cf7a42f220a/#" id="id71">Hint: Creating subclasses</a>
+        </header>
+        <section id="id71" style="display: none;">
+          <p>Subclass the provided classes to add your own
+	functionality to the new classes. Deciding what representation to
+	use in order to build up the graph is the most challenging part of
+              the problem set, so think through the problem carefully.<br>As a start, <code>WeightedEdge</code> should be a subclass of <code>Edge</code>, and <code>WeightedGraph</code> should be a subclass of <code>Digraph</code></p>
+        </section>
+      </div>
+    </section>
+    <p>Define a <code>WeightedDigraph</code> class to represent your graph.
+      You will also need to define a <code>WeightedEdge</code> class to
+      represent the edges of your graph. Be sure to use subclassing and inheritance.</p>
+    <p>With your <code>WeightedDigraph</code> implementation, you should be able to replicate
+      the following transcript, which begins to model the above graph:</p>
+    <pre>&gt;&gt;&gt; g = WeightedDigraph()
+&gt;&gt;&gt; na = Node('a')
+&gt;&gt;&gt; nb = Node('b')
+&gt;&gt;&gt; nc = Node('c')
+&gt;&gt;&gt; g.addNode(na)
+&gt;&gt;&gt; g.addNode(nb)
+&gt;&gt;&gt; g.addNode(nc)
+&gt;&gt;&gt; e1 = WeightedEdge(na, nb, 15, 10)
+&gt;&gt;&gt; print e1
+a-&gt;b (15, 10)
+&gt;&gt;&gt; print e1.getTotalDistance()
+15
+&gt;&gt;&gt; print e1.getOutdoorDistance()
+10
+&gt;&gt;&gt; e2 = WeightedEdge(na, nc, 14, 6)
+&gt;&gt;&gt; e3 = WeightedEdge(nb, nc, 3, 1)
+&gt;&gt;&gt; print e2
+a-&gt;c (14, 6)
+&gt;&gt;&gt; print e3
+b-&gt;c (3, 1)
+&gt;&gt;&gt; g.addEdge(e1)
+&gt;&gt;&gt; g.addEdge(e2)
+&gt;&gt;&gt; g.addEdge(e3)
+&gt;&gt;&gt; print g
+a-&gt;b (15.0, 10.0)
+a-&gt;c (14.0, 6.0)
+b-&gt;c (3.0, 1.0)</pre>
+    <br>
+    <br>
+    <section class="hints">
+      <div class="collapsible">
+        <header>
+          <a href="https://courses.edx.org/courses/MITx/6.00.2_2x/3T2014/courseware/b33b3ed61da74919872a3d5ac354c512/2da3a93ca7fa418cae541cf7a42f220a/#" id="id71">Hint: Which class methods?</a>
+        </header>
+        <section id="id71" style="display: none;">
+          <p>From the transcript above, you can see which methods should be implemented.</p>
+          <br>
+          <p><b>The <code>WeightedEdge</code> class will have:</b></p>
+          <ul>
+            <li><code>__init__(self, src, dest, weight1, weight2)</code></li>
+            <li><code>getTotalDistance(self)</code></li>
+            <li><code>getOutdoorDistance(self)</code></li>
+            <li><code>__str__(self)</code></li>
+          </ul>
+          <p><b>The <code>WeightedDigraph</code> class will have:</b></p>
+          <ul>
+            <li><code>__init__(self)</code></li>
+            <li><code>addEdge(self,edge)</code></li>
+            <li><code>childrenOf(self,node)</code></li>
+            <li><code>__str__(self)</code></li>
+          </ul>
+        </section>
+      </div>
+    </section>
+    <br>
+
+
+    <section class="hints">
+      <div class="collapsible">
+        <header>
+          <a href="https://courses.edx.org/courses/MITx/6.00.2_2x/3T2014/courseware/b33b3ed61da74919872a3d5ac354c512/2da3a93ca7fa418cae541cf7a42f220a/#" id="id71">Common mistakes and (hopefully) helpful implementation tips</a>
+        </header>
+        <section id="id71" style="display: none;">
+          <p><b>How to store <code>WeightedDigraph</code> edges?</b></p>
+          <ul>
+            <li>source_node:[ [dest_node, (total_dist, outdoor_dist) ], [dest_node, (total_dist, outdoor_dist) ] ]</li>
+             <li> In the following example, <code>{a: [ [b,(2,1)], [c,(3,2)]], b: [[c,(4,2)]], c:[] }</code>, there are nodes <code>Node('a')</code> and <code>Node('b')</code> and <code>Node('c')</code>. Node c does not have any edges associated with it. Edges <code>a-&gt;b</code> (with total distance 2 and outdoor distace 1) and <code>a-&gt;c</code> (with total distance 3 and outdoor distace 2) and <code>b-&gt;c</code> (with total distance 4 and outdoor distace 2). </li>
+            </ul>
+          <p><b>Careful using the <code>__eq__</code> method</b></p>
+          <ul>
+            <li>In object oriented programming, you overload certain methods, like <code>__str__</code> so that you can inspect he values of the variables during debugging. One pitfall of this is that you may get confused about types.</li>
+            <li>An error such as <code>AttributeError: 'str' object has no attribute 'name'</code> means that you are trying to access the data attribute called <code>name</code> of an object of type <code>string</code>). Instead, you should be accessing data attribute <code>name</code> of an object of type <code>Node</code>.</li>
+            <li>Make sure you are storing graph nodes as something like <code>Node('some string')</code> instead of just <code>'some string'</code></li>
+            </ul>
+          <p><b>"See Full Output" and debugging</b></p>
+<ul>
+  <li>If you are creating your own small play graphs, you should add <code>WeightedEdge</code>s with <code>some_edge = WeightedEdge(Node('a'), Node('b'), 45, 30)</code>. For readability, the grader shows you this same test case as: <code>some_edge = WeightedEdge(a, b, 45, 30)</code>
+  </li>
+          </ul>
+
+        </section>
+      </div>
+    </section>
+    <br>
+
+
+
+
+
+    <p>
+      Paste your code for both <code>WeightedEdge</code> and <code>WeightedDigraph</code> classes below. You may assume the grader has provided implementations for Node, Edge, and Digraph.</p>
+  </span>
+  <span><section id="textbox_i4x-MITx-6_00_2_2x-problem-a26456634a694f21a938052b4ecf6196_2_1" class="capa_inputtype textbox cminput">
+  <textarea rows="30" cols="70" name="input_i4x-MITx-6_00_2_2x-problem-a26456634a694f21a938052b4ecf6196_2_1" aria-label="python editor" aria-describedby="answer_i4x-MITx-6_00_2_2x-problem-a26456634a694f21a938052b4ecf6196_2_1" id="input_i4x-MITx-6_00_2_2x-problem-a26456634a694f21a938052b4ecf6196_2_1" tabindex="0" data-mode="python" data-tabsize="4" data-linenums="true" style="display: none;"># weighted edge
+class WeightedEdge(Edge):
+    '''
+    weight stores information about distance travelled
+     weight can be distance travelled outside &amp; total distance
+    '''
+    def __init__(self, src, dest, total, outside):
+        Edge.__init__(self, src, dest)
+        self.outdoor = outside
+        self.total = total
+
+    def getOutdoorDistance(self):
+        return self.outdoor
+
+    def getTotalDistance(self):
+        return self.total
+
+    def __str__(self):
+        srcdest = Edge.__str__(self)
+        dists = '{0} ({1}, {2})'.format(srcdest, self.total, self.outdoor)
+        return dists
+
+
+# Weighted digraph (unidirectional)
+class WeightedDigraph(Digraph):
+
+    def addEdge(self, edge):
+        src = edge.getSource()
+        dest = float(edge.getTotalDistance())
+        totalDist = float(edge.getOutdoorDistance())
+        outdoorDist = edge.getOutdoorDistance()
+        if not(src in self.nodes and dest in self.nodes):
+            raise ValueError('Node not in graph')
+        self.edges[src].append([dest, (totalDist, outdoorDist)])
+
+    def childrenOf(self, node):
+        children = []
+        for n in self.edges[node]:
+            children.append(n[0])
+        return children
+
+    def __str__(self):
+        st = ''
+        for k in self.edges:
+            for d in self.edges[k]:
+                st += '{0}-&gt;{1} {2}\n'.format(k.getName(), d[0].getName(), str(d[1]))
+        return st[:-1]</textarea>
+      </section>
+      </span>
+      </div>
+    </div>
+</body>

@@ -101,7 +101,7 @@ class DDrunk(Drunk):
 
 
 
-#new function for random walk calculation of actual x & y distance
+# new function for random walk calculation of actual x & y distance
 def walkVector(f, d, numSteps):
     start = f.getLoc(d)
     for s in range(numSteps):

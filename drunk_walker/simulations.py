@@ -56,14 +56,20 @@ def drunkTest_diffClasses(numTrials = 100):
 
 
 
-# a simulation with drunk animations
-def simWithAnimation(numSteps, f, dClass, testNum):
+def plotSimWalking(testNum, xAxis, yAxis):
+    pylab.title('Steps Drunk Took Within Field: ' + f.getType())
+    pylab.figure(testNum)
+    pylab.xlim(-60, 60)
+    pylab.ylim(-60, 60)
+    pylab.plot(xAxis, yAxis, 'ro')
+
+
+def simDrunkWalking(numSteps, f, dClass, testNum):
     homer = dClass('Homer')
     origin = Location(0, 0)
     xAxis = []
     yAxis = []
     f.addDrunk(homer, origin)
-    # anim = DrunkVisualize.DrunkVisualize(f)
 
     # move & animated drunk
     for s in range(numSteps):
@@ -71,15 +77,30 @@ def simWithAnimation(numSteps, f, dClass, testNum):
         x, y = f.drunks[homer].getX(), f.drunks[homer].getY()
         xAxis.append(x)
         yAxis.append(y)
-        # anim.update(f, f.getDrunks())
         print f.drunks[homer]
-    # anim.done()
 
-    pylab.title('Steps Drunk Took Within Field: ' + f.getType())
-    pylab.figure(testNum)
-    pylab.xlim(-60, 60)
-    pylab.ylim(-60, 60)
-    pylab.plot(xAxis, yAxis, 'ro')
+    plotSimWalking(testNum, xAxis, yAxis)
+
+# a simulation with drunk animations
+def simWithAnimation(numSteps, f, dClass, testNum=0):
+    homer = dClass('Homer')
+    origin = Location(0, 0)
+    xAxis = []
+    yAxis = []
+    f.addDrunk(homer, origin)
+    anim = DrunkVisualize.DrunkVisualize(f)
+
+    # move & animated drunk
+    for s in range(numSteps):
+        f.moveDrunk(homer)
+        x, y = f.drunks[homer].getX(), f.drunks[homer].getY()
+        xAxis.append(x)
+        yAxis.append(y)
+        anim.update(f, f.getDrunks())
+        print f.drunks[homer]
+    anim.done()
+
+    plotSimWalking(testNum, xAxis, yAxis)
 
 '''
 N-random steps: drunk takes N*N random steps with following:
@@ -103,8 +124,19 @@ def drunkTest_enclosedField():
     for i in xrange(len(fields)):
         simWithAnimation(5000, fields[i], dClass, i)
 
-    simWithAnimation(5000, fields[0], dClass, i)
 
     pylab.show()
 
 drunkTest_enclosedField()
+
+
+import FieldType
+
+def drunkTest_Animated(dClass, fieldType, numFields):
+    fieldType.getFieldFromInt()
+    simWithAnimation(5000, dClass, numFields)
+
+
+random.randint(0, 5)
+
+drunkTestAnimated(ColdDrunk, FieldType.backHome, )

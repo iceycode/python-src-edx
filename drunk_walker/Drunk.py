@@ -8,6 +8,7 @@ class Drunk(object):
     def __init__(self, name):
         self.name = name
         self.direction = 0
+        self.location = (0,0)
 
     def setLocation(self, x, y):
         self.location = x, y

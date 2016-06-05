@@ -1,4 +1,4 @@
-__author__ = 'Allen'
+__author__ = "Allen"
 from Tkinter import *
 import time, math
 

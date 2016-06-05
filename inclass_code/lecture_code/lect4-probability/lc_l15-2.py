@@ -1,7 +1,7 @@
 import random, pylab
 #set line width
 pylab.rcParams['lines.linewidth'] = 6
-#set font size for titles 
+#set font size for titles
 pylab.rcParams['axes.titlesize'] = 20
 #set font size for labels on axes
 pylab.rcParams['axes.labelsize'] = 20
@@ -138,8 +138,8 @@ def flipPlot2(minExp, maxExp, numTrials):
     pylab.semilogx()
     pylab.semilogy()
 
-#flipPlot2(4, 20, 20)
-#pylab.show()
+flipPlot2(4, 20, 20)
+pylab.show()
 
 
 

@@ -18,7 +18,10 @@ from ps3b_precompiled_27 import *
 
 #
 # PROBLEM 1
-#        
+#
+from virus_treatment.ps3b import ResistantVirus, TreatedPatient
+
+
 def simulationDelayedTreatment(numTrials):
     """
     Runs simulations and make histograms for problem 1.

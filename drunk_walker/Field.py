@@ -34,6 +34,7 @@ class Location(object):
         return '<' + str(self.x) + ', ' + str(self.y) + '>'
 
 
+
 class Field(object):
     def __init__(self):
         self.drunks = {}
@@ -169,8 +170,9 @@ class SolidWallField(EnclosedField):
     def getType(self):
         return 'Solid Wall Field'
 
-# goes back home if moves past edges/fences
+#goes back home if moves past edges/fences
 class BackHomeField(EnclosedField):
+
 
     def moveWithinEnclosed(self, currentLocation, steps):
         global EDGES_HIT
