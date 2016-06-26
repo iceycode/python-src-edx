@@ -13,7 +13,7 @@ NOTE: for some reason, even though my problem set
 #import numpy
 import pylab
 #from ps3b import *
-from ps3b_precompiled_27 import *
+# from ps3b_precompiled_27 import *
 
 
 #

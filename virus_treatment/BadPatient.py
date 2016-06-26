@@ -13,7 +13,7 @@ NOTE: for some reason, even though my problem set
      However, they can still be used - simply ignore the error
 """
 
-from ps3b_precompiled_27 import *
+from virus_treatment.ps3b import *
 
 
 

@@ -4,7 +4,8 @@
 import random
 import pylab
 
-from psb3_precompiled_27 import *
+#### NOTE: this seems to be missing
+## from psb3_precompiled_27 import *
 
 ''' 
 Begin helper code

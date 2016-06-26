@@ -1,7 +1,7 @@
 __author__ = 'Allen'
 
 import pylab
-from ps3b_precompiled_27 import *
+import ps3b_original
 
 #
 # PROBLEM 5
@@ -50,7 +50,7 @@ def simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
 
     plotWithDrugSimulation([i for i in xrange(300)], avgs_total1, avgs_total2)
 
-import matplotlib.patches as mpatches
+
 def plotWithDrugSimulation(time, avg_pops, avg_resist_pops):
     '''
     Plots averages of populations over number of trials as function of time

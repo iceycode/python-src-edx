@@ -1,35 +1,36 @@
 __author__ = 'Allen'
 
-from virus_simulation.ps3b import *
+## precompiled reference
+from ps3b import *
 
 '''for testing SimpleVirus/Patient classes'''
 
-# def initiate_class_test():
-    # random.seed();
-    #virus that always reproduces and always cleared
-    # viruses1 = [SimpleVirus(1.0, 0.0)]
-    # print "Patient test 1; clearPro = 0, maxBirthProb = 1.0"
-    # patient_test(viruses1)
-    #
-    # #virus that always reproduces and always cleared
-    # viruses2 = [SimpleVirus(1.0, 1.0)]
-    # print "Patient test 2; clearPro = 1.0, maxBirthProb = 1.0"
-    # patient_test(viruses2, 1)
-    #
-    # #virus with probMaxBirth = .96, clear = .12
-    # #testing random virus
-    # print "testing virus with clearProb = .96 & maxBirthProb = .12"
-    # virus_test(.96, .12)
-    #
-    # print "testing virus that has clearPro = 0.0 & maxBirthProb = 0.0"
-    # virus_test(0.0, 0.0)
-    #
-    # print "testing virus that has clearPro = 1.0 & maxBirthProb = 0.0"
-    # virus_test(1.0, 0.0)
+def initiate_class_test():
+    random.seed()
+    ## virus that always reproduces and always cleared
+    viruses1 = [SimpleVirus(1.0, 0.0)]
+    print "Patient test 1; clearPro = 0, maxBirthProb = 1.0"
+    patient_test(viruses1)
 
-    #ResistantVirus Tests
-    #is never cleared always reproduces
-    #resistantVirusTest( 1.0, 0.0, {}, 0.0)
+    #virus that always reproduces and always cleared
+    viruses2 = [SimpleVirus(1.0, 1.0)]
+    print "Patient test 2; clearPro = 1.0, maxBirthProb = 1.0"
+    patient_test(viruses2, 1)
+
+    #virus with probMaxBirth = .96, clear = .12
+    #testing random virus
+    print "testing virus with clearProb = .96 & maxBirthProb = .12"
+    virus_test(.96, .12)
+
+    print "testing virus that has clearPro = 0.0 & maxBirthProb = 0.0"
+    virus_test(0.0, 0.0)
+
+    print "testing virus that has clearPro = 1.0 & maxBirthProb = 0.0"
+    virus_test(1.0, 0.0)
+
+    ## ResistantVirus Tests
+    ##   is never cleared always reproduces
+    resistantVirusTest( 1.0, 0.0, {}, 0.0)
 
 
 def virus_test(clearProb, maxBirthProb):
